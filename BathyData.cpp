@@ -42,12 +42,13 @@ bool BathyData::LoadFromFile(std::string FileName, irr::IrrlichtDevice *device)
 		std::string tmp;
 		while (std::getline(fp, tmp, '\n'))
 		{
+			std::cout << "line read: " << tmp << "\n";
 			y = 0;
 			std::string tmp2;
 			std::istringstream iss(tmp);
 			while (std::getline(iss, tmp2, ' '))
 			{
-				number = (float)atof(tmp2.c_str());
+				number = float(atof(tmp2.c_str()));
 				if (!depth_negative)
 					number *= -1.0f;
 				if (number > 0.0f)
@@ -59,6 +60,8 @@ bool BathyData::LoadFromFile(std::string FileName, irr::IrrlichtDevice *device)
 			}
 			x++;
 		}
+		cell_sizes.setX(bm_max(cell_sizes.getX(), x));
+		cell_sizes.setY(bm_max(cell_sizes.getY(), y));
 		if (x == 0 || y == 0)
 		{
 			std::cout << "Empty File Read.\n";
