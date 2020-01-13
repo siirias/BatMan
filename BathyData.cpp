@@ -178,14 +178,21 @@ bool BathyData::SaveToXMLFile(std::string FileName, irr::IrrlichtDevice * device
 	}
 	xwriter->writeXMLHeader();
 	wchar_t tmp[100];
+	wchar_t tmp_bounds[4][100];
+	tmp_bounds[0];
 	swprintf(tmp,100,L"%d",depth_negative);
+	swprintf(tmp_bounds[0], 20, L"%f ", lat_min);
+	swprintf(tmp_bounds[1], 20, L"%f ", lat_max);
+	swprintf(tmp_bounds[2], 20, L"%f ", lon_min);
+	swprintf(tmp_bounds[3], 20, L"%f ", lon_max);
+
 	xwriter->writeElement(L"depth_negative", true, L"dn",tmp);
 	xwriter->writeLineBreak();                  //new line
 	xwriter->writeElement(L"coordinates", true, 
-							L"lat_min", str2wchar(std::to_string(lat_min)), 
-							L"lat_max", str2wchar(std::to_string(lat_max)),
-							L"lon_min", str2wchar(std::to_string(lon_min)),
-							L"lon_max", str2wchar(std::to_string(lon_max)));
+							L"lat_min", tmp_bounds[0], 
+							L"lat_max", tmp_bounds[1],
+							L"lon_min", tmp_bounds[2],
+							L"lon_max", tmp_bounds[3]);
 	xwriter->writeLineBreak();                  //new line
 	xwriter->writeElement(L"Data");
 	xwriter->writeLineBreak();                  //new line

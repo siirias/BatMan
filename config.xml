@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<initial_file if="koe.txt"/>
+<initial_file if="initial_bathymetry.txt"/>
 <fonts small="font_arial_10.xml" large="font_arial_12.xml" />
 <zoom step="10.0" min_dist="10.0" max_dist="2000.0"/>
 <depth_scale scale="1000.0"/>
