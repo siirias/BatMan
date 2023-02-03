@@ -43,6 +43,7 @@ public:
 
 	bool wire;
 	bool smooth;
+	bool separate_landmask;
 	bool scale_all_depths_to_current_depth;
 	int last_menu_selection; //For example, whether loading or saving things
 	bool take_screenshot;

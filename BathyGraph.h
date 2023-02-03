@@ -43,10 +43,12 @@ public:
 	float size_y;
 	float max_z;
 	float depth_multip;
+	float max_depth_for_drawing;
 	int cells;
 	int prims_cell;
 	int selected_cell;
 	bool wire;
 	bool smooth;
+	bool separate_land;
 };
 

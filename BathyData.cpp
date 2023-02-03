@@ -7,6 +7,7 @@ BathyData::BathyData()
 	y_in_m = 2000.0f;
 	depth_in_m = 1.0f;
 	depth_negative = false;
+	max_depth_for_drawing = -1;
 	undo_steps.clear();
 	current_undo_step = -1;
 	reset_metadata();
@@ -96,6 +97,10 @@ bool BathyData::LoadFromXMLFile(std::string FileName, irr::IrrlichtDevice *devic
 				if (((irr::core::stringw) xml->getNodeName()).equals_ignore_case("depth_negative"))
 				{
 					depth_negative = xml->getAttributeValueAsInt(0)!=0;
+				}
+				if (((irr::core::stringw)xml->getNodeName()).equals_ignore_case("max_depth_for_drawing"))
+				{
+					max_depth_for_drawing = xml->getAttributeValueAsInt(0);
 				}
 				if (((irr::core::stringw) xml->getNodeName()).equals_ignore_case("coordinates"))
 				{

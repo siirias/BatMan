@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<initial_file if="initial_bathymetry.txt"/>
+<initial_file if="test_bathymetries\bathy_meter_nemo_SS.txt"/>
 <fonts small="font_arial_10.xml" large="font_arial_12.xml" />
 <zoom step="10.0" min_dist="10.0" max_dist="2000.0"/>
 <depth_scale scale="1000.0"/>
@@ -7,18 +7,19 @@
 <step_radius radius="2" min="1" max="30.0"/>
 <step_size_change ssc="0.5"/>
 <help_text_keys htk="
-´+´                     = increase radius of effect
-´-´                     = decrease radius of effect
-shift+´+´               = increase strength of effect
-shift+´-´               = decrease strength of effect
-´r´                     = reset view
-´g´                     = show/hide grid
-´s´                     = toggle smooth/block view
-shift+´R´               = select raise/lower tool
-shift+´E´               = select even tool
-´F10´                   = take a screenshot
-cntrl+´z´               = undo previous edit
-cntrl+´y´               = redo previous edit
+Â´+Â´                     = increase radius of effect
+Â´-Â´                     = decrease radius of effect
+shift+Â´+Â´               = increase strength of effect
+shift+Â´-Â´               = decrease strength of effect
+Â´rÂ´                     = reset view
+Â´gÂ´                     = show/hide grid
+Â´sÂ´                     = toggle smooth/block view
+'t'						= toggle land-color
+shift+Â´RÂ´               = select raise/lower tool
+shift+Â´EÂ´               = select even tool
+Â´F10Â´                   = take a screenshot
+cntrl+Â´zÂ´               = undo previous edit
+cntrl+Â´yÂ´               = redo previous edit
 --------------------------------------------
 left-mousebutton        = tilt view
 right-mousebutton       = drag view

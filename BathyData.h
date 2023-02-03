@@ -124,6 +124,7 @@ public:
 	float y_in_m; //how many meters one cell is in y-axis (if constant)
 	float depth_in_m; //how many meters depth unit is in meters (if constant)
 	bool depth_negative;
+	int max_depth_for_drawing; //used to pick the drawing colors.
 	std::vector<std::vector<bm_undo>> undo_steps;
 	int current_undo_step;
 };

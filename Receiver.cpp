@@ -44,6 +44,7 @@ bool Receiver::OnEvent(const SEvent& event)
 	bool activate_toggle_grid = false;
 	bool activate_toggle_smooth = false;
 	bool scale_all_depths_to_current_depth = false;
+	bool activate_toggle_separate_landmask = false;
 	if (event.EventType == EET_KEY_INPUT_EVENT )
 	{
 		if (event.KeyInput.PressedDown)
@@ -59,6 +60,9 @@ bool Receiver::OnEvent(const SEvent& event)
 				break;
 			case KEY_KEY_G:
 				activate_toggle_grid = true;
+				break;
+			case KEY_KEY_T:
+				activate_toggle_separate_landmask = true;
 				break;
 			case KEY_KEY_L:
 				ui_order = BM_UI_ORDER_TOGGLE_LANDMASK;
@@ -335,6 +339,8 @@ bool Receiver::OnEvent(const SEvent& event)
 
 		}
 	}
+	if (activate_toggle_separate_landmask)
+		separate_landmask = !separate_landmask;
 	if (activate_toggle_grid)
 		wire = !wire;
 	if (activate_toggle_smooth)

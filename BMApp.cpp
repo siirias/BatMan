@@ -249,6 +249,11 @@ int BMApp::handle_inputs()
 		return false;
 	main_bm_node->wire = GF.receiver->wire;
 	main_bm_node->smooth = GF.receiver->smooth;
+	if (main_bm_node->separate_land != GF.receiver->separate_landmask)
+	{
+		main_bm_node->RefreshFromData();
+		main_bm_node->separate_land = GF.receiver->separate_landmask;
+	}
 	if (GF.receiver->change_mode_to != -1)
 	{
 		active_mode = GF.receiver->change_mode_to;

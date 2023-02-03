@@ -33,6 +33,7 @@ BathyGraph::BathyGraph(scene::ISceneNode * parent, scene::ISceneManager * mgr, s
 	smooth_PrimIndices = NULL;
 	wire = true;
 	smooth = true;
+	separate_land = true;
 	selected_cell = 0;
 
 }
@@ -76,6 +77,7 @@ bool BathyGraph::RefreshFromData()
 	//}
 //	depth_multip = (0.15*bm_max(cells_x, cells_y)*cell_size) / max_z;
 	depth_multip = cell_size*Bathymetry.depth_in_m/(Bathymetry.x_in_m);
+	max_depth_for_drawing = Bathymetry.max_depth_for_drawing;
 	cells = 0;
 	prims_cell = 3;
 	cells = cells_x*cells_y;
@@ -219,14 +221,17 @@ SColor BathyGraph::color_from_height(float height)
 {
 	SColor Col1(255, 255, 255, 255);
 	SColor Col2(255, 0, 0, 255);
-	float col_m = fabs(height) / (max_z*depth_multip);// *6.0f;
+	float tmp_max_z = max_z;
+	if (max_depth_for_drawing > 0)
+		tmp_max_z = max_depth_for_drawing;
+	float col_m = fabs(height) / (tmp_max_z*depth_multip);// *6.0f;
 	if (col_m>1.0f)
 		col_m = 1.0f;
 	SColor col_temp = SColor(255,
 		(int)((float)Col1.getRed()*(1.0f - col_m) + (float)Col2.getRed()*(col_m)),
 		(int)((float)Col1.getGreen()*(1.0f - col_m) + (float)Col2.getGreen()*(col_m)),
 		(int)((float)Col1.getBlue()*(1.0f - col_m) + (float)Col2.getBlue()*(col_m)));
-	if ((height >= -0.0001f))
+	if (separate_land && (height >= -0.0001f))
 		col_temp = SColor(255, 60, 150, 60);
 	return col_temp;
 }
